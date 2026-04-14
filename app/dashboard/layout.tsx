@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { LayoutDashboard, BarChart3, Settings, Users } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { DashboardNav } from "@/components/layout/dashboard-nav";
 
 export const metadata: Metadata = {
   title: "대시보드",
@@ -27,24 +27,7 @@ export default function DashboardLayout({
       <div className="flex gap-8">
         {/* 사이드바 */}
         <aside className="hidden w-52 shrink-0 md:block">
-          <nav className="flex flex-col gap-1">
-            <p className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              메뉴
-            </p>
-            {sidebarItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
+          <DashboardNav items={sidebarItems} />
         </aside>
 
         <Separator orientation="vertical" className="hidden h-auto md:block" />

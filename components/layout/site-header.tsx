@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { DesktopNav } from "@/components/layout/desktop-nav";
 import { Separator } from "@/components/ui/separator";
 
 // 사이트 상단 고정 헤더 — 데스크톱 네비 + 모바일 Sheet 네비
@@ -16,18 +17,8 @@ export function SiteHeader() {
           <span>{siteConfig.name}</span>
         </Link>
 
-        {/* 데스크톱 네비게이션 */}
-        <nav className="hidden md:flex items-center gap-1 flex-1">
-          {siteConfig.navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        {/* 데스크톱 네비게이션 — 활성 링크 처리를 위해 클라이언트 컴포넌트 사용 */}
+        <DesktopNav />
 
         {/* 우측 액션 */}
         <div className="ml-auto flex items-center gap-2">

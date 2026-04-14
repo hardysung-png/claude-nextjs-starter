@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Form,
   FormControl,
@@ -51,14 +52,20 @@ export default function ContactPage() {
 
   const { isSubmitting } = form.formState;
 
-  async function onSubmit(values: ContactFormValues) {
-    // 실제 API 호출로 교체하세요
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    console.log(values);
-    toast.success("문의가 접수되었습니다!", {
-      description: "빠른 시일 내에 답변드리겠습니다.",
-    });
-    form.reset();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async function onSubmit(_: ContactFormValues) {
+    try {
+      // TODO: 실제 API 호출로 교체하세요
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      toast.success("문의가 접수되었습니다!", {
+        description: "빠른 시일 내에 답변드리겠습니다.",
+      });
+      form.reset();
+    } catch {
+      toast.error("전송에 실패했습니다.", {
+        description: "잠시 후 다시 시도해주세요.",
+      });
+    }
   }
 
   return (
@@ -142,8 +149,8 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel>메시지</FormLabel>
                       <FormControl>
-                        <textarea
-                          className="flex min-h-32 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                        <Textarea
+                          className="min-h-32"
                           placeholder="문의 내용을 자세히 작성해주세요"
                           {...field}
                         />

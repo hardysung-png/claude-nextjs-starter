@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link, { type LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 
+import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
 import {
@@ -65,16 +65,16 @@ function MobileLink({
   className,
   ...props
 }: MobileLinkProps) {
-  const router = useRouter();
-
   return (
     <Link
       href={href}
       onClick={() => {
-        router.push(href.toString());
         onOpenChange?.(false);
       }}
-      className={`rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground ${className ?? ""}`}
+      className={cn(
+        "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
+        className
+      )}
       {...props}
     >
       {children}

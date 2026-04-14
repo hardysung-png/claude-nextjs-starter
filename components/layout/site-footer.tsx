@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Globe, X } from "lucide-react";
 
 import { siteConfig } from "@/lib/site-config";
-import { Separator } from "@/components/ui/separator";
 
 // 사이트 하단 푸터 — 카피라이트 + 링크 + 소셜 아이콘
 export function SiteFooter() {
@@ -10,7 +9,6 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-auto border-t bg-background">
-      <Separator />
       <div className="container mx-auto max-w-screen-2xl px-4 py-8">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           {/* 브랜드 + 카피라이트 */}
