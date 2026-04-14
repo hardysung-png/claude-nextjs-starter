@@ -1,0 +1,2 @@
+- [프로젝트 기술 스택 및 버전](project_stack.md) — next@16.2.3, react@19.2.4, Tailwind v4 CSS-first, radix-ui 단일 패키지 방식
+- [반복 발견 코드 이슈](recurring_issues.md) — 버전 문자열 불일치, MobileLink 이중 네비, onSubmit 에러 핸들링 누락, Separator 중복
